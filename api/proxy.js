@@ -1,8 +1,6 @@
-// api/proxy.js - Node.js Serverless Function for Vercel
-const fetch = require('node-fetch');
-
+// api/proxy.js - Native Fetch (Zero Dependencies, no package.json needed!)
 module.exports = async (req, res) => {
-    // Enable CORS so your GitHub Pages frontend can securely read the results
+    // Enable CORS for your GitHub Pages frontend
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -23,6 +21,7 @@ module.exports = async (req, res) => {
     }
 
     try {
+        // Uses native global fetch (Standard in Node 18+)
         const response = await fetch(url, {
             headers: {
                 'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1'
